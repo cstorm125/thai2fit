@@ -1,6 +1,9 @@
 # thai2vec
 Language Modeling, Word2Vec and Text Classification in Thai Language
 
+![random word vectors](https://raw.githubusercontent.com/cstorm125/thai2vec/master/data/thaiwiki/png/random.png)
+*Random word vectors* 
+
 # Word Embeddings
 
 The `thai2vec.vec` contains 51556 word embeddings of 300 dimensions, in descending order by their frequencies (See `thai2vec.vocab`). The files are in word2vec format readable by `gensim`. Most common applications include word vector visualization, word arithmetic, word grouping, cosine similarity and sentence or document vectors. For sample code, see `examples.ipynb`.
@@ -12,6 +15,8 @@ You can do simple "arithmetic" with words based on the word vectors such as:
 * หุ้น (stock) - พนัน (gambling) = กิจการ (business)
 * อเมริกัน (american) + ฟุตบอล (football) = เบสบอล (baseball)
 
+![word arithmetic](https://raw.githubusercontent.com/cstorm125/thai2vec/master/data/thaiwiki/png/word_arithematic_queen.png)
+
 ## Word Grouping
 
 It can also be used to do word groupings. For instance:
@@ -19,6 +24,8 @@ It can also be used to do word groupings. For instance:
 * ลูกสาว ลูกสะใภ้ ลูกเขย ป้า (duaghter daughter-in-law son-in-law aunt) - ลูกสาว (daughter) is immediate family whereas others are not
 * กด กัด กิน เคี้ยว (press bite eat chew) - กด (press) is not verbs for the eating process
 Note that this could be relying on a different "take" than you would expect. For example, you could have answered ลูกเขย in the second example because it  is the one associated with male gender.
+
+![word grouping](https://raw.githubusercontent.com/cstorm125/thai2vec/master/data/thaiwiki/png/doesnt_match1.png)
 
 ## Cosine Similarity
 
@@ -29,6 +36,8 @@ Calculate cosine similarity between two word vectors.
 * ปักกิ่ง (Beijing) and โรม (Rome): 0.27347283956785434
 * จีน (China) and โรม (Rome): 0.02666692964073511
 * อิตาลี (Italy) and ปักกิ่ง (Beijing): 0.17900795797557473
+
+![cosine similarity](https://raw.githubusercontent.com/cstorm125/thai2vec/master/data/thaiwiki/png/cosin_sim_arrows.png)
 
 ## Sentence/Document Vectors
 
@@ -45,7 +54,7 @@ TBD
 
 # To-do
 
-[x] Language modeling based on wikipedia dump
-[x] Extract embeddings and save as gensim format
-[] Fine-tuning model for text classification on BEST
-[] Benchmark text classification with FastText
+* [x] Language modeling based on wikipedia dump
+* [x] Extract embeddings and save as gensim format
+* [] Fine-tuning model for text classification on BEST
+* [] Benchmark text classification with FastText
