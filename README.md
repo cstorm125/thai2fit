@@ -1,5 +1,6 @@
 # thai2vec
 Language Modeling, Word2Vec and Text Classification in Thai Language
+Created as part of [pyThaiNLP](https://github.com/PyThaiNLP/)
 
 ![random word vectors](https://raw.githubusercontent.com/cstorm125/thai2vec/master/data/thaiwiki/png/random.png)
 *Random word vectors* 
