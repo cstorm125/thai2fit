@@ -1,5 +1,8 @@
 # thai2vec
-Language Modeling, Word2Vec and Text Classification in Thai Language
+Language Modeling, Word2Vec and Text Classification in Thai Language.
+Created as part of [pyThaiNLP](https://github.com/PyThaiNLP/).
+
+We provide state-of-the-art language modeling (perplexity of 46.61 on Thai wikipedia) and text classification (94.4% accuracy on four-label classification problem. Benchmarked to 65.2% by [fastText](fasttext.cc) on NECTEC's [BEST dataset](https://thailang.nectec.or.th/best/)). Credits to [fast.ai](http://www.fast.ai/).
 
 ![random word vectors](https://raw.githubusercontent.com/cstorm125/thai2vec/master/data/thaiwiki/png/random.png)
 *Random word vectors* 
@@ -50,11 +53,11 @@ Thai word embeddings and language model are trained using the [fast.ai](http://w
 
 # Text Classification
 
-TBD
+We follow [Howard and Ruder (2018)](https://arxiv.org/abs/1801.06146) approach on finetuning language models for text classification. The language model used is the one previously trained--the [fast.ai](http://www.fast.ai/) version of [AWD LSTM Language Model](https://arxiv.org/abs/1708.02182). The dataset is NECTEC's [BEST](https://thailang.nectec.or.th/best/), which is labeled as article, encyclopedia, news and novel. We preprocessed to remove the segmentation token and used an 80/20 split for training and validation. This resulted in 119241 sentences in the training and 29250 sentences in the validation set. We achieved **94.4%** accuracy of four-label classification using the finetuning model as compared to **65.2%** by [fastText](fasttext.cc) using their own [pretrained embeddings](https://github.com/facebookresearch/fastText/blob/master/pretrained-vectors.md). 
 
 # To-do
 
 * [x] Language modeling based on wikipedia dump
 * [x] Extract embeddings and save as gensim format
-* [] Fine-tuning model for text classification on BEST
-* [] Benchmark text classification with FastText
+* [x] Fine-tuning model for text classification on BEST
+* [x] Benchmark text classification with FastText
