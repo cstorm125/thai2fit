@@ -2,7 +2,7 @@
 Language Modeling, Word2Vec and Text Classification in Thai Language.
 Created as part of [pyThaiNLP](https://github.com/PyThaiNLP/).
 
-Models and word embeddings can also be downloaded [here](https://drive.google.com/drive/folders/1_vZr_iR_LqIX4rEi7i5spN_6QDgj5r81?usp=sharing).
+Models and word embeddings can also be downloaded via [Google Drive](https://drive.google.com/drive/folders/1_vZr_iR_LqIX4rEi7i5spN_6QDgj5r81?usp=sharing) or [Dropbox](https://www.dropbox.com/sh/t9qfj2ethst8g20/AAAgud8rZ_Wuv6fkXq0HEj4da?dl=0).
 
 We provide state-of-the-art language modeling (perplexity of 46.61 on Thai wikipedia) and text classification (94.4% accuracy on four-label classification problem. Benchmarked to 65.2% by [fastText](fasttext.cc) on NECTEC's [BEST dataset](https://thailang.nectec.or.th/best/)). Credits to [fast.ai](http://www.fast.ai/).
 
