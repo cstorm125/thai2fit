@@ -70,4 +70,5 @@ v0.2 - the refactoring and ulmfit
 * [ ] Extract embeddings and save as gensim format
 * [ ] Fine-tuning model for text classification on e-commerce review data
 * [ ] Benchmark text classification with FastText
-
+* [ ] Feature extraction and clustering e-commerce review data
+* [ ] Text-to-speech example
