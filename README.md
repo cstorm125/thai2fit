@@ -66,8 +66,8 @@ v0.1
 * [x] Benchmark text classification with FastText
 
 v0.2 - the refactoring and ulmfit
-* [] Language modeling based on wikipedia dump
-* [] Extract embeddings and save as gensim format
-* [] Fine-tuning model for text classification on e-commerce review data
-* [] Benchmark text classification with FastText
+* [ ] Language modeling based on wikipedia dump
+* [ ] Extract embeddings and save as gensim format
+* [ ] Fine-tuning model for text classification on e-commerce review data
+* [ ] Benchmark text classification with FastText
 
