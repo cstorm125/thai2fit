@@ -59,7 +59,15 @@ We follow [Howard and Ruder (2018)](https://arxiv.org/abs/1801.06146) approach o
 
 # To-do
 
+v0.1
 * [x] Language modeling based on wikipedia dump
 * [x] Extract embeddings and save as gensim format
 * [x] Fine-tuning model for text classification on BEST
 * [x] Benchmark text classification with FastText
+
+v0.2 - the refactoring and ulmfit
+* [] Language modeling based on wikipedia dump
+* [] Extract embeddings and save as gensim format
+* [] Fine-tuning model for text classification on e-commerce review data
+* [] Benchmark text classification with FastText
+
