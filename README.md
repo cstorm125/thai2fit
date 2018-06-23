@@ -1,12 +1,11 @@
-# thai2vec
-State-of-the-Art Language Modeling, Text Feature Extraction and Text Classification in Thai Language.
+# thai2vec: State-of-the-Art Language Modeling, Text Feature Extraction and Text Classification in Thai Language.
 Created as part of [pyThaiNLP](https://github.com/PyThaiNLP/) with [ULMFit](https://arxiv.org/abs/1801.06146) implementation from [fast.ai](http://nlp.fast.ai/classification/2018/05/15/introducting-ulmfit.html)
 
 Models and word embeddings can also be downloaded via [Google Drive](https://drive.google.com/drive/folders/1_vZr_iR_LqIX4rEi7i5spN_6QDgj5r81?usp=sharing) or [Dropbox](https://www.dropbox.com/sh/t9qfj2ethst8g20/AAAgud8rZ_Wuv6fkXq0HEj4da?dl=0).
 
 We provide state-of-the-art language modeling (perplexity of 34.87803 on Thai wikipedia) and text classification (micro-averaged F-1 score of 0.60925 on 5-label classification problem. Benchmarked to 0.49366 by [fastText](fasttext.cc) on [Wongnai Challenge: Review Rating Prediction](https://www.kaggle.com/c/wongnai-challenge-review-rating-prediction). The language model can also be used to extract text features for other downstream tasks.
 
-![random word vectors](../images/random.png)
+![random word vectors](../images/random.png?raw=True)
 *Random word vectors* 
 
 # Dependencies
