@@ -1,12 +1,12 @@
-# thai2vec: State-of-the-Art Language Modeling, Text Feature Extraction and Text Classification in Thai Language.
+# thai2vec
+State-of-the-Art Language Modeling, Text Feature Extraction and Text Classification in Thai Language.
 Created as part of [pyThaiNLP](https://github.com/PyThaiNLP/) with [ULMFit](https://arxiv.org/abs/1801.06146) implementation from [fast.ai](http://nlp.fast.ai/classification/2018/05/15/introducting-ulmfit.html)
 
 Models and word embeddings can also be downloaded via [Google Drive](https://drive.google.com/drive/folders/1_vZr_iR_LqIX4rEi7i5spN_6QDgj5r81?usp=sharing) or [Dropbox](https://www.dropbox.com/sh/t9qfj2ethst8g20/AAAgud8rZ_Wuv6fkXq0HEj4da?dl=0).
 
 We provide state-of-the-art language modeling (perplexity of 34.87803 on Thai wikipedia) and text classification (micro-averaged F-1 score of 0.60925 on 5-label classification problem. Benchmarked to 0.49366 by [fastText](fasttext.cc) on [Wongnai Challenge: Review Rating Prediction](https://www.kaggle.com/c/wongnai-challenge-review-rating-prediction). The language model can also be used to extract text features for other downstream tasks.
 
-![random word vectors](../images/random.png?raw=True)
-*Random word vectors* 
+![random word vectors](https://github.com/cstorm125/thai2vec/blob/dev/images/random.png?raw=true)
 
 # Dependencies
 * Python 3.6.5
@@ -40,7 +40,7 @@ You can do simple "arithmetic" with words based on the word vectors such as:
 * หุ้น (stock) - พนัน (gambling) = กิจการ (business)
 * อเมริกัน (american) + ฟุตบอล (football) = เบสบอล (baseball)
 
-![word arithmetic](../images/word_arithematic_queen.png)
+![word arithmetic](https://github.com/cstorm125/thai2vec/blob/dev/images/word_arithematic_queen.png)
 
 ## Word Grouping
 
@@ -50,7 +50,7 @@ It can also be used to do word groupings. For instance:
 * กด กัด กิน เคี้ยว (press bite eat chew) - กด (press) is not verbs for the eating process
 Note that this could be relying on a different "take" than you would expect. For example, you could have answered ลูกเขย in the second example because it  is the one associated with male gender.
 
-![word grouping](../images/doesnt_match1.png)
+![word grouping](https://github.com/cstorm125/thai2vec/blob/dev/images/doesnt_match1.png)
 
 ## Cosine Similarity
 
@@ -62,7 +62,7 @@ Calculate cosine similarity between two word vectors.
 * จีน (China) and โรม (Rome): 0.02666692964073511
 * อิตาลี (Italy) and ปักกิ่ง (Beijing): 0.17900795797557473
 
-![cosine similarity](../images/cosin_sim_arrows.png)
+![cosine similarity](https://github.com/cstorm125/thai2vec/blob/dev/images/cosin_sim_arrows.png)
 
 # Language Modeling
 
