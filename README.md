@@ -23,7 +23,7 @@ We provide state-of-the-art language modeling (perplexity of 34.87803 on Thai wi
 
 ## v0.2
 
-* Refactored to use `fastai.text` instead of `torch.text`
+* Refactored to use `fastai.text` instead of `torchtext`
 * Pretrained language model based on Thai Wikipedia with the perplexity of 34.87803 (`pretrain_wiki.ipynb`)
 * Pretrained word embeddings (.vec and .bin) with 60,000 tokens and 300 dimensions (`word2vec_examples.ipynb`)
 * Classification benchmark of 0.60925 micro-averaged F1 score compared to 0.49366 by [fastText](https://fasttext.cc/) and 0.58139 by competition winner for 5-label classification of [Wongnai Challenge: Review Rating Prediction](https://www.kaggle.com/c/wongnai-challenge-review-rating-prediction) (`ulmfit_wongnai.ipynb`)
