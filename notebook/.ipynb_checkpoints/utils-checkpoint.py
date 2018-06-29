@@ -81,8 +81,8 @@ def document_vector(ss, m, stoi,tok_engine='newmm'):
     res = to_np(torch.mean(pred[-1],0).view(-1))
     return(res)
     
-#load pretrained embeddings
-def pretrained_wgts(em_sz, wgts, itos_pre, itos_cls):
+#merge pretrained embeddings with current embeddings
+def merge_wgts(em_sz, wgts, itos_pre, itos_cls):
     vocab_size = len(itos_cls)
     enc_wgts = to_np(wgts['0.encoder.weight'])
     #average weight of encoding
