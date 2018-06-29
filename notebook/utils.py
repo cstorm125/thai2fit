@@ -72,7 +72,7 @@ def numericalizer(df, max_vocab = 60000, min_freq = 2, pad_tok = '_pad_',
 
 #get document vectors from language model
 def document_vector(ss, m, stoi,tok_engine='newmm'):
-    s = word_tokenize(ss)
+    s = word_tokenize(ss,tok_engine)
     t = LongTensor([stoi[i] for i in s]).view(-1,1).cuda()
     t = Variable(t,volatile=False)
     m.reset()
