@@ -11,7 +11,7 @@ We provide state-of-the-art language modeling (perplexity of 34.87803 on Thai wi
 # Dependencies
 * Python 3.6.5
 * PyTorch 0.4.0
-* fast.ai
+* fastai 0.7.0
 
 # Version History
 
