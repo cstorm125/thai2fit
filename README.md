@@ -6,7 +6,7 @@ Models and word embeddings can also be downloaded via [Dropbox](https://www.drop
 
 We provide state-of-the-art language modeling (perplexity of 46.04264 at 20% validation and **randnum** at 1% validation on Thai wikipedia) and text classification (micro-averaged F-1 score of **randnum** on 5-label classification problem. Benchmarked to 0.49366 by [fastText](fasttext.cc) on [Wongnai Challenge: Review Rating Prediction](https://www.kaggle.com/c/wongnai-challenge-review-rating-prediction). The language model can also be used to extract text features for other downstream tasks.
 
-![random word vectors](https://github.com/cstorm125/thai2fit/blob/dev/images/random.png?raw=true)
+![random word vectors](https://github.com/cstorm125/thai2fit/blob/master/images/random.png)
 
 # Dependencies
 * Python 3.6
