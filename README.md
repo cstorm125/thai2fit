@@ -1,5 +1,5 @@
 # thai2fit (formerly thai2vec)
-State-of-the-Art Language Modeling, Text Feature Extraction and Text Classification in Thai Language.
+ULMFit Language Modeling, Text Feature Extraction and Text Classification in Thai Language.
 Created as part of [pyThaiNLP](https://github.com/PyThaiNLP/) with [ULMFit](https://arxiv.org/abs/1801.06146) implementation from [fast.ai](http://nlp.fast.ai/classification/2018/05/15/introducting-ulmfit.html)
 
 Models and word embeddings can also be downloaded via [Dropbox](https://www.dropbox.com/sh/t9qfj2ethst8g20/AAAgud8rZ_Wuv6fkXq0HEj4da?dl=1).
