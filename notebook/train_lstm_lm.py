@@ -1,7 +1,6 @@
 #trained with fastai 0.7 and converted to fastai 1.0
 from fastai import *    
 from fastai.text import * 
-from utils import *
 import dill as pickle
 
 DATA_PATH='../lm_data/'
