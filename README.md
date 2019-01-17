@@ -35,6 +35,15 @@ We provide state-of-the-art language modeling (perplexity of 34.87803 on Thai wi
 * Pretrained language model based on Thai Wikipedia with the perplexity of 46.04264 (20% validation) and 23.32722 (1% validation) (`pretrain_wiki.ipynb`)
 * Pretrained word embeddings (.vec and .bin) with 60,000 tokens and 400 dimensions (`word2vec_examples.ipynb`) based on QRNN
 * Classification benchmark of 0.60925 micro-averaged F1 score compared to 0.49366 by [fastText](https://fasttext.cc/) and 0.58139 by competition winner for 5-label classification of [Wongnai Challenge: Review Rating Prediction](https://www.kaggle.com/c/wongnai-challenge-review-rating-prediction) (`ulmfit_wongnai.ipynb`)
+* LSTM weights are copied from v0.2 according to guideline provided in [fastai forum](https://forums.fast.ai/t/migrate-ulmfit-weights-trained-using-fastai-0-7-to-fastai-1-0/35100)
+```
+I remember someone doing a script but I can’t find it. For both, you just have to map the old names of the weights to the new ones. Note that:
+
+in language models, there is a bias in the decoder in fastai v1 that you probably won’t have
+in the classifier, the order you see for the layers is artificial (it’s the pytorch representation that takes the things in the order you put them in __init__ when not using Sequential) but the two models (old and new) apply batchnorm, dropout and linear in the same order
+tokenizing is done differently in fastai v1, so you may have to fine-tune your models again (we add an xxmaj token for words beginning with a capital for instance)
+for weight dropout, you want the weights you have put both in '0.rnns.0.module.weight_hh_l0' and 0.rnns.0.weight_hh_l0_raw (the second one is copied to the first with dropout applied anyway)
+```
 
 ## v0.4 (In Progress)
 * Replace AWD-LSTM/QRNN with tranformers-based models
