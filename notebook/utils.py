@@ -1,6 +1,6 @@
 import re
 import numpy as np
-from fastai import *    
+
 from fastai.text.transform import *
 from pythainlp.tokenize import word_tokenize
 from pythainlp.util import normalize as normalize_char_order
@@ -16,9 +16,9 @@ class ThaiTokenizer(BaseTokenizer):
     
 def replace_rep_after(t):
     "Replace repetitions at the character level in `t` after the repetition"
-    def _replace_rep(m:Collection[str]):
+    def _replace_rep(m):
         c,cc = m.groups()
-        return f' {c} {TK_REP} {len(cc)+1} '
+        return f'{c} {TK_REP} {len(cc)+1} '
     re_rep = re.compile(r'(\S)(\1{3,})')
     return re_rep.sub(_replace_rep, t)
 
@@ -34,8 +34,9 @@ def rm_brackets(t):
     return(new_line)
 
 #in case we want to add more specific rules for thai
-thai_rules = [fix_html, deal_caps, replace_rep_after, normalize_char_order, 
-              spec_add_spaces, rm_useless_spaces, rm_useless_newlines, rm_brackets]
+pre_rules_th = [fix_html, replace_rep_after, normalize_char_order, 
+                spec_add_spaces, rm_useless_spaces, rm_useless_newlines, rm_brackets]
+post_rules_th = [replace_all_caps, deal_caps]
 
 #get document vectors from language model
 def document_vector(ss, m, stoi):
