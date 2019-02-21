@@ -7,26 +7,26 @@ from pythainlp.util import normalize as normalize_char_order
 
 class ThaiTokenizer(BaseTokenizer):
     "Wrapper around a newmm tokenizer to make it a `BaseTokenizer`."
-    def __init__(self, lang:str = 'th'):
+    def __init__(self, lang = 'th'):
         self.lang = lang
-    def tokenizer(self, t:str) -> List[str]:
+    def tokenizer(self, t):
         return(word_tokenize(t,engine='ulmfit'))
-    def add_special_cases(self, toks:Collection[str]):
+    def add_special_cases(self, toks):
         pass
     
-def replace_rep_after(t:str) -> str:
+def replace_rep_after(t):
     "Replace repetitions at the character level in `t` after the repetition"
-    def _replace_rep(m:Collection[str]) -> str:
+    def _replace_rep(m:Collection[str]):
         c,cc = m.groups()
         return f' {c} {TK_REP} {len(cc)+1} '
     re_rep = re.compile(r'(\S)(\1{3,})')
     return re_rep.sub(_replace_rep, t)
 
-def rm_useless_newlines(t:str) -> str:
+def rm_useless_newlines(t):
     "Remove multiple newlines in `t`."
     return re.sub('[\n]{2,}', ' ', t)
 
-def rm_brackets(t:str) -> str:
+def rm_brackets(t):
     "Remove all empty brackets from `t`."
     new_line = re.sub('\(\)','',t)
     new_line = re.sub('\{\}','',new_line)
