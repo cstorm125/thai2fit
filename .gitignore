@@ -1,7 +1,7 @@
 #dev
 .ipynb_checkpoints/
-notebook/pythainlp
-notebook/thwiki_data
+*.ipynb_checkpoints*
+thwiki_lm/thwiki_data
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

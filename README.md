@@ -2,16 +2,16 @@
 ULMFit Language Modeling, Text Feature Extraction and Text Classification in Thai Language.
 Created as part of [pyThaiNLP](https://github.com/PyThaiNLP/) with [ULMFit](https://arxiv.org/abs/1801.06146) implementation from [fast.ai](http://nlp.fast.ai/classification/2018/05/15/introducting-ulmfit.html)
 
-Models and word embeddings can also be downloaded via [Dropbox](https://www.dropbox.com/sh/t9qfj2ethst8g20/AAAgud8rZ_Wuv6fkXq0HEj4da?dl=1).
+Models and word embeddings can also be downloaded via [Dropbox](https://www.dropbox.com/sh/lgd8wf5h0eoehzr/AACD0ZnpOiMKQq1N94WmfV-Va?dl=1).
 
-We provide state-of-the-art language modeling (perplexity of 34.87803 on Thai wikipedia) and text classification (micro-averaged F-1 score of 0.60925 on 5-label classification problem. Benchmarked to 0.49366 by [fastText](fasttext.cc) on [Wongnai Challenge: Review Rating Prediction](https://www.kaggle.com/c/wongnai-challenge-review-rating-prediction). The language model can also be used to extract text features for other downstream tasks.
+We pretrained a language model with 60,003 embeddings on [Thai Wikipedia Dump](https://dumps.wikimedia.org/thwiki/latest/thwiki-latest-pages-articles.xml.bz2) (perplexity of 51.6376 ) and text classification (micro-averaged F-1 score of 0.60925 on 5-label classification problem. Benchmarked to 0.5109 by [fastText](fasttext.cc) and 0.4976 by LinearSVC on [Wongnai Challenge: Review Rating Prediction](https://www.kaggle.com/c/wongnai-challenge-review-rating-prediction). The language model can also be used to extract text features for other downstream tasks.
 
 ![random word vectors](https://github.com/cstorm125/thai2fit/blob/master/images/random.png?raw=true)
 
 # Dependencies
-* Python 3.6
-* PyTorch 1.0
-* fastai 1.0.22
+* Python>=3.6
+* PyTorch>=1.0
+* fastai>=1.0.38
 
 # Version History
 
@@ -45,6 +45,12 @@ tokenizing is done differently in fastai v1, so you may have to fine-tune your m
 for weight dropout, you want the weights you have put both in '0.rnns.0.module.weight_hh_l0' and 0.rnns.0.weight_hh_l0_raw (the second one is copied to the first with dropout applied anyway)
 ```
 
+## v0.31
+* Support fastai>=1.0.38
+* Pretrained [Thai Wikipedia Dump](https://dumps.wikimedia.org/thwiki/latest/thwiki-latest-pages-articles.xml.bz2) with the same training scheme as [ulmfit-multilingual](https://github.com/n-waves/ulmfit-multilingual)
+* Remove QRNN models due to inferior performance
+* Classification benchmarks now include for [wongnai-corpus](https://github.com/wongnai/wongnai-corpus), [prachathai-67k](https://github.com/PyThaiNLP/prachathai-67k), and [wisesight-sentiment](https://github.com/cstorm125/wisesight-sentiment)
+
 ## v0.4 (In Progress)
 * Replace AWD-LSTM/QRNN with tranformers-based models
 * Named-entity recognition
@@ -57,16 +63,22 @@ We achieved validation perplexity at 35.75113 and validation micro F1 score at 0
 
 # Text Feature Extraction
 
-The pretrained language model of `thai2fit` can be used to convert Thai texts into vectors (roll credits!), after which said vectors can be used for various machine learning tasks such as classification, clustering, translation, question answering and so on. The idea is to train a language model that "understands" the texts then extract certain vectors that the model "thinks" represents the texts we want. We use 113,962 product reviews scraped from an ecommerce website as our sample dataset. See `ulmfit_ec.ipynb` for more details.
+The pretrained language model of `thai2fit` can be used to convert Thai texts into vectors, after which said vectors can be used for various machine learning tasks such as classification, clustering, translation, question answering and so on. The idea is to train a language model that "understands" the texts then extract certain vectors that the model "thinks" represents the texts we want. You can access this functionality easily via [pythainlp](https://github.com/pyThaiNLP/pythainlp/)
 
+```
+from pythainlp.ulmfit import *
+document_vector('วันนี้วันดีปีใหม่',learn,data)
+>> array([ 0.066298,  0.307813,  0.246051,  0.008683, ..., -0.058363,  0.133258, -0.289954, -1.770246], dtype=float32)
+```
 
 # Language Modeling
 
-Thai word embeddings and language model are trained using the [fast.ai](http://www.fast.ai/) version of [AWD LSTM Language Model](https://arxiv.org/abs/1708.02182)--QRNN with dropouts--with data from [Wikipedia](https://dumps.wikimedia.org/thwiki/latest/thwiki-latest-pages-articles.xml.bz2). Using 80/20 train-validation split, we achieved perplexity of **46.04264 with 60,002 embeddings at 400 dimensions**, compared to state-of-the-art as of June 12, 2018 at **40.68 for English WikiText-2 by [Yang et al (2017)](https://arxiv.org/abs/1711.03953)**. To the best of our knowledge, there is no comparable research in Thai language at the point of writing (November 11, 2018). See `pretrain_wiki.ipynb` for more details.
+
+The goal of this notebook is to train a language model using the [fast.ai](http://www.fast.ai/) version of [AWD LSTM Language Model](https://arxiv.org/abs/1708.02182), with data from [Thai Wikipedia Dump](https://dumps.wikimedia.org/thwiki/latest/thwiki-latest-pages-articles.xml.bz2) last updated February 17, 2019. Using 40M/200k/200k tokens of train-validation-test split, we achieved validation perplexity of **51.6376 with 60,003 embeddings at 400 dimensions**, compared to state-of-the-art as of October 27, 2018 at **42.41 for English WikiText-2 by [Yang et al (2018)](https://arxiv.org/abs/1711.03953)**. To the best of our knowledge, there is no comparable research in Thai language at the point of writing (February 17, 2019). See `thwiki_lm` for more details.
 
 # Word Embeddings
 
-The `thai2vec.vec` contains 60,000 word embeddings (plus padding and unknown tokens) of 400 dimensions, in descending order by their frequencies (See `thai2vec.vocab`). The files are in word2vec format readable by `gensim`. Most common applications include word vector visualization, word arithmetic, word grouping, cosine similarity and sentence or document vectors. For sample code, see `word2vec_examples.ipynb`.
+We use the embeddings from `v0.1` since it was trained specifically for word2vec as opposed to latter versions which garner to classification. The `thai2vec.bin` 51,556 word embeddings of 300 dimensions, in descending order by their frequencies (See `thai2vec.vocab`). The files are in word2vec format readable by `gensim`. Most common applications include word vector visualization, word arithmetic, word grouping, cosine similarity and sentence or document vectors. For sample code, see `thwiki_lm/word2vec_examples.ipynb`.
 
 ## Word Arithmetic
 

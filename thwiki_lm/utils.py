@@ -39,13 +39,13 @@ pre_rules_th = [fix_html, replace_rep_after, normalize_char_order,
 post_rules_th = [replace_all_caps, deal_caps]
 
 #get document vectors from language model
-def document_vector(ss, m, stoi):
-    s = word_tokenize(ss,engine='ulmfit')
-    t = LongTensor([stoi[i] for i in s]).view(-1,1).cuda()
-    t = Variable(t,volatile=False)
-    m.reset()
-    pred,*_ = m[0](t)
-    #get average of last lstm layer along bptt
-    res = to_np(torch.mean(pred[-1],0).view(-1))
-    return(res)
+# import torch
+# device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+# tt = ThaiTokenizer()
+# def document_vector(ss, learn, data):
+#     s = tt.tokenizer(ss)
+#     t = torch.tensor(data.vocab.numericalize(s), requires_grad=False).to(device)
+#     m = learn.model[0].encoder.to(device)
+#     res = m(t).mean(0).cpu().detach().numpy()
+#     return(res)
    
