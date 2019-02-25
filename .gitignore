@@ -1,7 +1,9 @@
 #dev
 *.ipynb_checkpoints*
 thwiki_lm/thwiki_data
+wongnai_cls/wongnai_data/
 *.ttf
+*.csv
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
