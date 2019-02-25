@@ -49,7 +49,7 @@ for weight dropout, you want the weights you have put both in '0.rnns.0.module.w
 * Support fastai>=1.0.38
 * Pretrained [Thai Wikipedia Dump](https://dumps.wikimedia.org/thwiki/latest/thwiki-latest-pages-articles.xml.bz2) with the same training scheme as [ulmfit-multilingual](https://github.com/n-waves/ulmfit-multilingual)
 * Remove QRNN models due to inferior performance
-* Classification benchmarks now include for [wongnai-corpus](https://github.com/wongnai/wongnai-corpus), [prachathai-67k](https://github.com/PyThaiNLP/prachathai-67k), and [wisesight-sentiment](https://github.com/cstorm125/wisesight-sentiment)
+* Classification benchmarks now include for [wongnai-corpus](https://github.com/wongnai/wongnai-corpus) (See `wongnai_cls`), [prachathai-67k](https://github.com/PyThaiNLP/prachathai-67k) (See `prachathai_cls`), and [wisesight-sentiment](https://github.com/cstorm125/wisesight-sentiment) (See `wisesight_cls`)
 
 ## v0.4 (In Progress)
 * Replace AWD-LSTM/QRNN with tranformers-based models
