@@ -3,7 +3,6 @@ from fastai.text import *
 from fastai.callbacks import CSVLogger
 from utils import *
 
-data_path = 'th-all-unk/'
 model_path = 'thwiki_data'
 
 #data
@@ -22,7 +21,7 @@ print(f'config: {config} \n trn_args: {trn_args}')
 
 learn = language_model_learner(data, AWD_LSTM, config=config, pretrained=False, **trn_args)
 learn.opt_fn = partial(optim.Adam, betas=(0.8, 0.99))
-learn.callback_fns += [partial(CSVLogger, filename=f"{model_path}/logs")]
+learn.callback_fns += [partial(CSVLogger, filename='logs')]
 print('learner done')
 
 #train frozen
@@ -33,12 +32,7 @@ learn.fit_one_cycle(1, 1e-2, moms=(0.8, 0.7))
 #train unfrozen
 print('training unfrozen')
 learn.unfreeze()
-learn.fit_one_cycle(10, 1e-3, moms=(0.8, 0.7))
-
-#train unfrozen with lower rates
-print('training unfrozen')
-learn.unfreeze()
-learn.fit_one_cycle(10, 1e-3/3, moms=(0.8, 0.7))
+learn.fit_one_cycle(20, 1e-3, moms=(0.8, 0.7))
 
 learn.save('thwiki_lm')
 learn.save_encoder('thwiki_enc')
