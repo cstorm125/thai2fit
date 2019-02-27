@@ -4,7 +4,7 @@ Created as part of [pyThaiNLP](https://github.com/PyThaiNLP/) with [ULMFit](http
 
 Models and word embeddings can also be downloaded via [Dropbox](https://www.dropbox.com/sh/lgd8wf5h0eoehzr/AACD0ZnpOiMKQq1N94WmfV-Va?dl=1).
 
-We pretrained a language model with 60,003 embeddings on [Thai Wikipedia Dump](https://dumps.wikimedia.org/thwiki/latest/thwiki-latest-pages-articles.xml.bz2) (perplexity of 51.6376 ) and text classification (micro-averaged F-1 score of 0.60925 on 5-label classification problem. Benchmarked to 0.5109 by [fastText](fasttext.cc) and 0.4976 by LinearSVC on [Wongnai Challenge: Review Rating Prediction](https://www.kaggle.com/c/wongnai-challenge-review-rating-prediction). The language model can also be used to extract text features for other downstream tasks.
+We pretrained a language model with 60,003 embeddings on [Thai Wikipedia Dump](https://dumps.wikimedia.org/thwiki/latest/thwiki-latest-pages-articles.xml.bz2) (perplexity of 51.6376 ) and text classification (micro-averaged F-1 score of 0.60322 on 5-label classification problem. Benchmarked to 0.5109 by [fastText](fasttext.cc) and 0.4976 by LinearSVC on [Wongnai Challenge: Review Rating Prediction](https://www.kaggle.com/c/wongnai-challenge-review-rating-prediction). The language model can also be used to extract text features for other downstream tasks.
 
 ![random word vectors](https://github.com/cstorm125/thai2fit/blob/master/images/random.png?raw=true)
 
@@ -59,7 +59,7 @@ for weight dropout, you want the weights you have put both in '0.rnns.0.module.w
 
 We trained the [ULMFit model](https://arxiv.org/abs/1801.06146) implemented by`thai2fit` for text classification. We use [Wongnai Challenge: Review Rating Prediction](https://www.kaggle.com/c/wongnai-challenge-review-rating-prediction) as our benchmark as it is the only sizeable and publicly available text classification dataset at the time of writing (June 21, 2018). It has 39,999 reviews for training and validation, and 6,203 reviews for testing. 
 
-We achieved validation perplexity at 35.75113 and validation micro F1 score at 0.598 for five-label classification. Micro F1 scores for public and private leaderboards are 0.61451 and 0.60925 respectively (supposedly we could train further with the 15% validation set we did not use), which are state-of-the-art as of the time of writing (June 21, 2018). FastText benchmark based on their own [pretrained embeddings](https://github.com/facebookresearch/fastText/blob/master/pretrained-vectors.md) has the performance of 0.50483 and 0.49366 for public and private leaderboards respectively. See `ulmfit_wongnai.ipynb` for more details.
+We achieved validation perplexity at 35.75113 and validation micro F1 score at 0.598 for five-label classification. Micro F1 scores for public and private leaderboards are 0.59313 and 0.60322 respectively, which are state-of-the-art as of the time of writing (February 27, 2019). FastText benchmark based on their own [pretrained embeddings](https://github.com/facebookresearch/fastText/blob/master/pretrained-vectors.md) has the performance of 0.50483 and 0.49366 for public and private leaderboards respectively. See `ulmfit_wongnai.ipynb` for more details.
 
 # Text Feature Extraction
 

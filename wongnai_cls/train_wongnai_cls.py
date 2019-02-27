@@ -37,7 +37,7 @@ print(f'Vocab size matched: {len(data_cls.vocab.itos)==len(data_lm.vocab.itos)}'
 #create learner
 config = dict(emb_sz=400, n_hid=1550, n_layers=4, pad_token=1, qrnn=False,
              output_p=0.25, hidden_p=0.1, input_p=0.2, embed_p=0.02, weight_p=0.15)
-trn_args = dict(bptt=70, drop_mult=0.5, alpha=2, beta=1,max_len=700)
+trn_args = dict(bptt=70, drop_mult=0.5, alpha=2, beta=1,max_len=1400)
 learn = text_classifier_learner(data_cls, AWD_LSTM, config=config, pretrained=False, **trn_args)
 learn.opt_func = partial(optim.Adam, betas=(0.7, 0.99))
 learn.callback_fns += [partial(CSVLogger, filename="logs_cls")]
@@ -49,13 +49,13 @@ learn.load_encoder('wongnai_enc')
 learn.freeze_to(-1)
 learn.fit_one_cycle(1, 2e-2, moms=(0.8, 0.7))
 
-#gradual unfreezing
+# #gradual unfreezing
 learn.freeze_to(-2)
-learn.fit_one_cycle(1, slice(1e-2 / (2.6 ** 4), 1e-2), moms=(0.8, 0.7))
-learn.freeze_to(-3)
-learn.fit_one_cycle(1, slice(5e-3 / (2.6 ** 4), 5e-3), moms=(0.8, 0.7))
-learn.unfreeze()
-learn.fit_one_cycle(1, slice(1e-3 / (2.6 ** 4), 1e-3), moms=(0.8, 0.7))
+learn.fit_one_cycle(5, slice(1e-2 / (2.6 ** 4), 1e-2), moms=(0.8, 0.7))
+#learn.freeze_to(-3)
+#learn.fit_one_cycle(1, slice(5e-3 / (2.6 ** 4), 5e-3), moms=(0.8, 0.7))
+# learn.unfreeze()
+# learn.fit_one_cycle(1, slice(1e-3 / (2.6 ** 4), 1e-3), moms=(0.8, 0.7))
 
 learn.save('wongnai_cls')
 print('done')
