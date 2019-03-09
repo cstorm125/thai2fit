@@ -1,7 +1,7 @@
 from fastai import *    
 from fastai.text import * 
-from fastai.callbacks import CSVLogger
-from utils import *
+from fastai.callbacks import CSVLogger, SaveModelCallback
+from pythainlp.ulmfit import *
 
 model_path = 'thwiki_data'
 
@@ -32,8 +32,9 @@ learn.fit_one_cycle(1, 1e-2, moms=(0.8, 0.7))
 #train unfrozen
 print('training unfrozen')
 learn.unfreeze()
-learn.fit_one_cycle(20, 1e-3, moms=(0.8, 0.7))
+learn.fit_one_cycle(20, 1e-3, moms=(0.8, 0.7),
+    callbacks=[SaveModelCallback(learn, every='improvement', monitor='accuracy', name='thwiki_lm')])
 
-learn.save('thwiki_lm')
+learn.load('thwiki_lm')
 learn.save_encoder('thwiki_enc')
 print('saved')
