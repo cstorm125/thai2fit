@@ -114,5 +114,18 @@ Calculate cosine similarity between two word vectors.
 
 ![cosine similarity](https://github.com/cstorm125/thai2fit/blob/master/images/cosin_sim_arrows.png?raw=true)
 
+# NLP Workshop at Chiangmai University
 
+- [Getting Started with PyThaiNLP](https://github.com/PyThaiNLP/pythainlp/blob/dev/notebooks/pythainlp-get-started.ipynb)
 
+- [thai2fit slides](https://www.canva.com/design/DADc1jbD1Hk/Iz4eFFQlbEMqjn8r99M85w/view)
+
+- [Text Generation with Wiki Language Model](https://github.com/PyThaiNLP/pythainlp/blob/dev/notebooks/text_generation.ipynb)
+
+- [Word Vectors](https://github.com/cstorm125/thai2fit/blob/master/thwiki_lm/word2vec_examples.ipynb)
+
+- [Sentiment Analysis](https://github.com/PyThaiNLP/pythainlp/blob/dev/notebooks/sentiment_analysis.ipynb)
+
+- [PyThaiNLP tutorial](https://www.thainlp.org/pythainlp/tutorials/)
+
+- [pyThaiNLP documentation](https://www.thainlp.org/pythainlp/docs/2.0/)
